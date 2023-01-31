@@ -1,6 +1,8 @@
 <li>
+<% @event.attendees.each do |attend|%>
   <div class="d-flex align-items-center gap-2 mb-3">
-    <%= image_tag attendee.decorate.avatar, class: 'rounded-circle avatar-md' %>
-    <%= attendee.name %>
+    <%= image_tag attend.decorate.avatar, class: 'rounded-circle avatar-md' %>
+    <%= link_to attend.name, user_path(attend) %>
   </div>
+<% end %>  
 </li>
