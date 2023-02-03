@@ -28,6 +28,9 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
+  validates :follower_id, presence: true
+  validates :followed_id, presence: true
+
   scope :allowing_created_event_notification,
         -> { joins(:notification_timings).merge(NotificationTiming.created_event) }
   scope :allowing_commented_to_event_notification,
@@ -96,5 +99,9 @@ class User < ApplicationRecord
   # フォローしているか判定
   def following?(user)
     followings.include?(user)
+  end
+
+  def current_user?(user)
+    user == current_user
   end
 end
