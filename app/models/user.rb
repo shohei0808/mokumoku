@@ -28,8 +28,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
-  validates :follower_id, presence: true
-  validates :followed_id, presence: true
+  
 
   scope :allowing_created_event_notification,
         -> { joins(:notification_timings).merge(NotificationTiming.created_event) }
