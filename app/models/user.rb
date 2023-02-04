@@ -101,7 +101,7 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
-  def current_user?(user)
-    user == current_user
+  def user_login?(user)
+    self == user
   end
 end
